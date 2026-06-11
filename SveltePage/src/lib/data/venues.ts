@@ -73,7 +73,7 @@ export const venues: Venue[] = [
 		city: 'Paris',
 		country: 'France',
 		description:
-			'Two rooms stacked together on Rue des Lombards — Sunside for acoustic, Sunset for electric. Continuous programming year-round.',
+			'Two rooms stacked together on Rue des Lombards, Sunside for acoustic, Sunset for electric. Continuous programming year-round.',
 		latitude: 48.8595,
 		longitude: 2.3475,
 		founded: 1983

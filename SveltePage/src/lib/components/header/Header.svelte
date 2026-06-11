@@ -6,6 +6,8 @@
 	const navLinks: NavLink[] = [
 		{ href: '/', label: 'Home' },
 		{ href: '/albums', label: 'Albums' },
+		{ href: '/articles', label: 'Articles' },
+		{ href: '/rss', label: 'RSS' },
 		{ href: '/contact', label: 'Contact' }
 	];
 
@@ -30,11 +32,11 @@
 
 <header class="site-header">
 	<div class="header-inner">
-		<a href="/" class="brand" onclick={closeMenu} aria-label="MusBeetle — home">
+		<a href="/" class="brand" onclick={closeMenu} aria-label="MusBeetle home">
 			<Logo size={32} />
 			<span class="brand-text">
 				<span class="brand-name">MusBeetle</span>
-				<span class="brand-tagline">Jazz, 2000–2009</span>
+				<span class="brand-tagline">Jazz, 2000 to 2009</span>
 			</span>
 		</a>
 
@@ -125,7 +127,7 @@
 		margin: 0;
 		padding: 0;
 		display: flex;
-		gap: var(--space-6);
+		gap: var(--space-5);
 	}
 
 	.primary-nav a {

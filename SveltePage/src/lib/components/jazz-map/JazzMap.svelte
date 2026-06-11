@@ -229,7 +229,7 @@
 		}
 	}
 
-	/* Leaflet overrides — keep selectors broad since they're in shadowless layer */
+	/* Leaflet overrides, keep selectors broad since they're in shadowless layer */
 	:global(.venue-marker .marker-dot) {
 		display: block;
 		width: 14px;

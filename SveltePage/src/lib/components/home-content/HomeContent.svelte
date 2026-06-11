@@ -1,11 +1,35 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import FeaturedAlbum from '$lib/components/featured-album/FeaturedAlbum.svelte';
 	import AlbumGrid from '$lib/components/album-grid/AlbumGrid.svelte';
+	import ArticleSearch from '$lib/components/article-search/ArticleSearch.svelte';
+	import ArticleGrid from '$lib/components/article-grid/ArticleGrid.svelte';
 	import { albums } from '$lib/data/albums';
+	import { fetchArticles } from '$lib/firebase/articles';
+	import type { Article } from '$lib/types';
 
-	// The decade's featured album — "Kind of Blue of the 2000s" pick.
 	const featured = albums.find((a) => a.id === 'historicity') ?? albums[0];
 	const previewAlbums = albums.filter((a) => a.id !== featured.id).slice(0, 6);
+
+	let allArticles = $state<Article[]>([]);
+	let filteredArticles = $state<Article[]>([]);
+	let isLoadingArticles = $state(true);
+	let hasLoadError = $state(false);
+
+	onMount(async () => {
+		try {
+			allArticles = await fetchArticles();
+			filteredArticles = allArticles;
+		} catch {
+			hasLoadError = true;
+		} finally {
+			isLoadingArticles = false;
+		}
+	});
+
+	function handleResults(results: Article[]) {
+		filteredArticles = results;
+	}
 </script>
 
 <div class="home">
@@ -17,8 +41,8 @@
 			</h1>
 			<p class="hero-lede">
 				Twelve albums from 2000 to 2009, picked for what they captured and what they pushed
-				forward. Not a ranking. A listening list — for anyone who has wondered where to start
-				with a decade jazz never quite stopped having.
+				forward. Not a ranking, just a listening list. For anyone who's wondered where to start
+				with a decade jazz never really stopped having.
 			</p>
 			<div class="hero-stats">
 				<div>
@@ -26,8 +50,8 @@
 					<span class="stat-label">Essential records</span>
 				</div>
 				<div>
-					<span class="stat-num">10</span>
-					<span class="stat-label">Years covered</span>
+					<span class="stat-num">12</span>
+					<span class="stat-label">Editorial articles</span>
 				</div>
 				<div>
 					<span class="stat-num">08</span>
@@ -62,8 +86,8 @@
 				The shortlist, <em>part one.</em>
 			</h2>
 			<p class="preview-lede">
-				Six entries from our twelve-album guide. Each pick has a paragraph of context, a standout
-				track to start with, and an era tag to give it shape.
+				Six picks from the twelve-album guide. Each one comes with a paragraph of context, a
+				standout track to start with, and an era tag to give it shape.
 			</p>
 		</header>
 
@@ -73,6 +97,46 @@
 			<span>See all twelve</span>
 			<span class="arrow" aria-hidden="true">→</span>
 		</a>
+	</section>
+
+	<div class="divider">
+		<span class="divider-label">Editorial · From Firebase</span>
+	</div>
+
+	<section class="articles-section">
+		<header class="section-header">
+			<p class="section-eyebrow">Long reads & quick takes</p>
+			<h2 class="section-title">
+				The writing <em>around the records.</em>
+			</h2>
+			<p class="section-lede">
+				Album reviews, musician profiles, and scene histories, fetched live from Firestore. Search
+				by title, author, or tag, or filter by category.
+			</p>
+		</header>
+
+		{#if isLoadingArticles}
+			<div class="loading">
+				<span class="spinner" aria-hidden="true"></span>
+				<p>Loading articles…</p>
+			</div>
+		{:else if hasLoadError}
+			<div class="error-state" role="alert">
+				<p class="error-title">Couldn't reach Firebase</p>
+				<p class="error-text">
+					Check that the <code>.env</code> file has the right keys and that the
+					<code>articles</code> collection has been seeded.
+				</p>
+			</div>
+		{:else}
+			<ArticleSearch articles={allArticles} onResults={handleResults} />
+			<ArticleGrid articles={filteredArticles} />
+
+			<a class="see-all" href="/articles">
+				<span>Read every article</span>
+				<span class="arrow" aria-hidden="true">→</span>
+			</a>
+		{/if}
 	</section>
 </div>
 
@@ -268,5 +332,98 @@
 		.hero-stats {
 			gap: var(--space-5);
 		}
+	}
+
+	.articles-section {
+		max-width: var(--max-content);
+		margin: 0 auto var(--space-9);
+	}
+
+	.section-header {
+		max-width: 44rem;
+		margin-bottom: var(--space-6);
+	}
+
+	.section-eyebrow {
+		font-family: var(--font-mono);
+		font-size: 0.78rem;
+		letter-spacing: 0.22em;
+		text-transform: uppercase;
+		color: var(--color-accent);
+		margin-bottom: var(--space-4);
+	}
+
+	.section-title {
+		font-size: clamp(2rem, 4vw, 3rem);
+		margin-bottom: var(--space-4);
+	}
+
+	.section-title em {
+		font-style: italic;
+		color: var(--color-accent);
+	}
+
+	.section-lede {
+		color: var(--color-text-muted);
+		font-size: 1.05rem;
+		line-height: 1.65;
+	}
+
+	.loading {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: var(--space-4);
+		padding: var(--space-9) var(--space-4);
+		color: var(--color-text-muted);
+		font-family: var(--font-mono);
+		font-size: 0.85rem;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+	}
+
+	.spinner {
+		width: 28px;
+		height: 28px;
+		border: 2px solid var(--color-hairline-strong);
+		border-top-color: var(--color-accent);
+		border-radius: 50%;
+		animation: spin 0.85s linear infinite;
+	}
+
+	@keyframes spin {
+		to { transform: rotate(360deg); }
+	}
+
+	.error-state {
+		padding: var(--space-6);
+		background: var(--color-bg-elevated);
+		border: 1px solid var(--color-warn);
+		border-left: 3px solid var(--color-warn);
+	}
+
+	.error-title {
+		font-family: var(--font-display);
+		font-style: italic;
+		font-size: 1.4rem;
+		color: var(--color-warn);
+		margin: 0 0 var(--space-3);
+	}
+
+	.error-text {
+		color: var(--color-text-muted);
+		margin: 0;
+		font-size: 0.95rem;
+		line-height: 1.65;
+	}
+
+	.error-text code {
+		font-family: var(--font-mono);
+		font-size: 0.85em;
+		padding: 0.1em 0.4em;
+		background: var(--color-bg);
+		border: 1px solid var(--color-hairline);
+		color: var(--color-accent);
 	}
 </style>

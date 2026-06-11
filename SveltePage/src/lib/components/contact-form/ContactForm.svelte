@@ -23,7 +23,7 @@
 		if (!isFormValid) return;
 
 		isSubmitting = true;
-		// Simulated submission — would post to an endpoint in production
+		// Simulated submission, would post to an endpoint in production
 		setTimeout(() => {
 			isSubmitting = false;
 			hasSubmitted = true;
@@ -45,7 +45,7 @@
 			<p class="eyebrow">Message received</p>
 			<h3>Thanks, {name.split(' ')[0]}.</h3>
 			<p class="success-body">
-				We read every note. If your message asks for a reply, expect one within a week or so —
+				We read every note. If your message asks for a reply, expect one within a week or so , 
 				we're a small editorial outfit.
 			</p>
 			<button class="reset-btn" onclick={resetForm}>Send another message</button>

@@ -26,7 +26,7 @@ export const albums: Album[] = [
 		year: 2002,
 		era: 'Post-Bop',
 		blurb:
-			'Shorter at 68, with a band that listens like one organism. The compositions are decades old but the playing is restless, searching, alive — the sound of musicians refusing to repeat themselves.',
+			"Shorter at 68, with a band that listens like one organism. The compositions are decades old but the playing is restless, searching, alive. It's the sound of musicians refusing to repeat themselves.",
 		standoutTrack: 'JuJu',
 		coverPalette: {
 			background: '#2d1810',
@@ -77,7 +77,7 @@ export const albums: Album[] = [
 		year: 2004,
 		era: 'Big Band',
 		blurb:
-			'Released only through ArtistShare, it became the first download-only record to win a Grammy. The music is gentler than the format fight suggests — long-form, painterly writing for large ensemble.',
+			'Released only through ArtistShare, it became the first download-only record to win a Grammy. The music is gentler than that format fight suggests: long-form, painterly writing for large ensemble.',
 		standoutTrack: 'Choro Dançado',
 		coverPalette: {
 			background: '#1f2614',
@@ -111,7 +111,7 @@ export const albums: Album[] = [
 		year: 2005,
 		era: 'Post-Bop',
 		blurb:
-			'Moran lets the blues sit in plain sight. With Marvin Sewell on guitar, the trio reaches back through stride, country blues, and James P. Johnson — not as study, but as inheritance.',
+			'Moran lets the blues sit in plain sight. With Marvin Sewell on guitar, the trio reaches back through stride, country blues, and James P. Johnson, not as study but as inheritance.',
 		standoutTrack: 'Jump Up',
 		coverPalette: {
 			background: '#2c1e0e',
@@ -128,7 +128,7 @@ export const albums: Album[] = [
 		year: 2006,
 		era: 'World Jazz',
 		blurb:
-			'The bassist composes like he learned harmony from cantorial singing and Cuban montunos at the same time. Acoustic, propulsive, and unmistakably his — a record that travels without sounding lost.',
+			'The bassist composes like he learned harmony from cantorial singing and Cuban montunos at the same time. Acoustic, propulsive, and unmistakably his. A record that travels without ever sounding lost.',
 		standoutTrack: 'Continuo',
 		coverPalette: {
 			background: '#241818',
@@ -179,7 +179,7 @@ export const albums: Album[] = [
 		year: 2008,
 		era: 'Modern Post-Bop',
 		blurb:
-			"A debut that announced a trumpeter unwilling to play the obvious phrase. Akinmusire's tone is grainy, vocal, almost reluctant — and the writing matches, never reaching for the easy resolution.",
+			"A debut that announced a trumpeter unwilling to play the obvious phrase. Akinmusire's tone is grainy, vocal, almost reluctant, and the writing matches: never reaching for the easy resolution.",
 		standoutTrack: 'Cora',
 		coverPalette: {
 			background: '#0e1e2c',

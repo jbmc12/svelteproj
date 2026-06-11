@@ -19,13 +19,13 @@
 	aria-label="MusBeetle logo"
 	role="img"
 >
-	<!-- Outer ring — record disc reference -->
+	<!-- Outer ring, record disc reference -->
 	<circle cx="20" cy="20" r="18.5" stroke={bodyColor} stroke-width="1" opacity="0.55" />
 
-	<!-- Beetle body — oval -->
+	<!-- Beetle body, oval -->
 	<ellipse cx="20" cy="21" rx="8" ry="10" fill={bodyColor} />
 
-	<!-- Vertical center line — wing case division -->
+	<!-- Vertical center line, wing case division -->
 	<line x1="20" y1="13" x2="20" y2="31" stroke={accentColor} stroke-width="0.8" />
 
 	<!-- Head -->
@@ -37,6 +37,6 @@
 	<circle cx="16" cy="6.5" r="1" fill={accentColor} />
 	<circle cx="24" cy="6.5" r="1" fill={accentColor} />
 
-	<!-- Center accent — record label -->
+	<!-- Center accent, record label -->
 	<circle cx="20" cy="20" r="1.6" fill={accentColor} />
 </svg>

@@ -5,6 +5,8 @@
 	const projectLinks: NavLink[] = [
 		{ href: '/', label: 'Home' },
 		{ href: '/albums', label: 'The Albums' },
+		{ href: '/articles', label: 'Articles' },
+		{ href: '/rss', label: 'RSS Feeds' },
 		{ href: '/contact', label: 'Contact' }
 	];
 
@@ -29,7 +31,7 @@
 	<div class="footer-inner">
 		<div class="footer-grid">
 			<div class="footer-brand">
-				<a href="/" class="footer-logo" aria-label="MusBeetle — home">
+				<a href="/" class="footer-logo" aria-label="MusBeetle home">
 					<Logo size={36} />
 					<span>MusBeetle</span>
 				</a>

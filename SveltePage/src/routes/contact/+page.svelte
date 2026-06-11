@@ -4,7 +4,7 @@
 </script>
 
 <svelte:head>
-	<title>Contact & Venues — MusBeetle</title>
+	<title>Contact & Venues | MusBeetle</title>
 	<meta
 		name="description"
 		content="A map of legendary jazz venues across four continents, plus a way to reach the MusBeetle editors."
@@ -18,9 +18,9 @@
 			Where the music <em>is.</em>
 		</h1>
 		<p class="page-lede">
-			These eight rooms have shaped the way jazz sounds — and gets recorded — for decades. Many of
-			the albums in our list passed through them. Below the map, a form to send us a suggestion,
-			a correction, or just say hello.
+			These eight rooms have shaped how jazz sounds, and how it gets recorded, for decades. Plenty
+			of the albums on our list passed through them. Below the map, a form for sending a
+			suggestion, a correction, or just saying hello.
 		</p>
 	</header>
 
@@ -42,8 +42,9 @@
 					Tell us <em>what we missed.</em>
 				</h2>
 				<p class="contact-text">
-					Twelve picks for ten years of jazz is necessarily a thin slice. If you think a record
-					belongs here that doesn't, tell us why. If you spotted an error, we'd rather know.
+					Twelve picks for ten years of jazz is a pretty thin slice. If you think a record
+					belongs here that isn't on the list, let us know why. Spotted an error? We'd rather
+					hear about it.
 				</p>
 				<div class="direct-contact">
 					<div class="contact-item">

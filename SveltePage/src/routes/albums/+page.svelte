@@ -15,7 +15,7 @@
 </script>
 
 <svelte:head>
-	<title>The Albums — MusBeetle</title>
+	<title>The Albums | MusBeetle</title>
 	<meta
 		name="description"
 		content="Twelve jazz albums from 2000 to 2009 with editorial notes, standout tracks, and era tags. The full MusBeetle list."
@@ -29,8 +29,8 @@
 			Twelve <em>records.</em>
 		</h1>
 		<p class="page-lede">
-			Filter by era or read straight through. Each entry has a short blurb and a single track to
-			start with — built for the listener who wants a way in, not a syllabus.
+			Filter by era or read straight through. Each entry comes with a short blurb and a single
+			track to start with. Built for the listener who wants a way in, not a syllabus.
 		</p>
 	</header>
 

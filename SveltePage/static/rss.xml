@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>MusBeetle Editorial</title>
+		<link>https://musbeetle.example</link>
+		<description>Editorial articles on essential jazz albums of the 2000s.</description>
+		<language>en-us</language>
+		<atom:link href="https://musbeetle.example/rss.xml" rel="self" type="application/rss+xml" />
+		<item>
+			<title>Rethinking Largo, Twenty Years Later</title>
+			<link>https://musbeetle.example/articles/rethinking-largo</link>
+			<guid isPermaLink="true">https://musbeetle.example/articles/rethinking-largo</guid>
+			<pubDate>Tue, 12 Mar 2024 09:00:00 GMT</pubDate>
+			<description>Brad Mehldau's strangest record gets reframed as the decade's most quietly influential.</description>
+		</item>
+		<item>
+			<title>The Bad Plus and the Rock Argument</title>
+			<link>https://musbeetle.example/articles/bad-plus-rock-argument</link>
+			<guid isPermaLink="true">https://musbeetle.example/articles/bad-plus-rock-argument</guid>
+			<pubDate>Sat, 04 May 2024 09:00:00 GMT</pubDate>
+			<description>Why a piano trio's cover of Nirvana mattered more than the cover itself.</description>
+		</item>
+		<item>
+			<title>Who Was Esbjörn Svensson?</title>
+			<link>https://musbeetle.example/articles/who-was-esbjorn-svensson</link>
+			<guid isPermaLink="true">https://musbeetle.example/articles/who-was-esbjorn-svensson</guid>
+			<pubDate>Mon, 22 Jan 2024 09:00:00 GMT</pubDate>
+			<description>A profile of the Swedish pianist whose trio sold out rock venues across Europe.</description>
+		</item>
+		<item>
+			<title>Robert Glasper as a Bridge</title>
+			<link>https://musbeetle.example/articles/glasper-bridge</link>
+			<guid isPermaLink="true">https://musbeetle.example/articles/glasper-bridge</guid>
+			<pubDate>Thu, 18 Apr 2024 09:00:00 GMT</pubDate>
+			<description>Before Black Radio there was Canvas — and Canvas was the album that quietly redrew the map.</description>
+		</item>
+		<item>
+			<title>Where to Start: The 2000s in 90 Minutes</title>
+			<link>https://musbeetle.example/articles/where-to-start-jazz-2000s</link>
+			<guid isPermaLink="true">https://musbeetle.example/articles/where-to-start-jazz-2000s</guid>
+			<pubDate>Mon, 10 Jun 2024 09:00:00 GMT</pubDate>
+			<description>A track-by-track listening guide for the absolute beginner.</description>
+		</item>
+	</channel>
+</rss>

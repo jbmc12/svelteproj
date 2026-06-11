@@ -38,3 +38,28 @@ export interface SocialLink {
 	label: string;
 	platform: string;
 }
+
+export type ArticleCategory = 'album-review' | 'musician-profile' | 'scene-history' | 'listening-guide';
+
+export interface Article {
+	id: string;
+	slug: string;
+	title: string;
+	excerpt: string;
+	body: string;
+	category: ArticleCategory;
+	author: string;
+	publishedAt: string;
+	readingTimeMinutes: number;
+	tags: string[];
+	accentHue: number;
+}
+
+export interface RssFeed {
+	id: string;
+	name: string;
+	publisher: string;
+	url: string;
+	description: string;
+	category: string;
+}

@@ -1,4 +1,4 @@
-/* MusBeetle — global styles
+/* MusBeetle, global styles
    Design tokens, base typography, and shared utilities. */
 
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=DM+Sans:opsz,wght@9..40,300..700&family=DM+Mono:wght@400;500&display=swap');
@@ -115,7 +115,7 @@ img {
 	display: block;
 }
 
-/* Utility: meta text — small caps-feeling label, monospaced */
+/* Utility: meta text, small caps-feeling label, monospaced */
 .meta-label {
 	font-family: var(--font-mono);
 	font-size: 0.75rem;
