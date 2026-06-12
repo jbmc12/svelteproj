@@ -4,9 +4,11 @@
 
 	interface Props {
 		articles: Article[];
+		onEdit?: (article: Article) => void;
+		onDelete?: (article: Article) => void;
 	}
 
-	let { articles }: Props = $props();
+	let { articles, onEdit, onDelete }: Props = $props();
 </script>
 
 {#if articles.length === 0}
@@ -17,7 +19,7 @@
 {:else}
 	<div class="article-grid">
 		{#each articles as article (article.id)}
-			<ArticleCard {article} />
+			<ArticleCard {article} {onEdit} {onDelete} />
 		{/each}
 	</div>
 {/if}

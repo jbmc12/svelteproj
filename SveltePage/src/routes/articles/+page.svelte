@@ -2,7 +2,14 @@
 	import { onMount } from 'svelte';
 	import ArticleSearch from '$lib/components/article-search/ArticleSearch.svelte';
 	import ArticleGrid from '$lib/components/article-grid/ArticleGrid.svelte';
-	import { fetchArticles } from '$lib/firebase/articles';
+	import ArticleEditor from '$lib/components/article-editor/ArticleEditor.svelte';
+	import ConfirmDialog from '$lib/components/confirm-dialog/ConfirmDialog.svelte';
+	import {
+		fetchArticles,
+		createArticle,
+		updateArticle,
+		deleteArticle
+	} from '$lib/firebase/articles';
 	import type { Article } from '$lib/types';
 
 	let allArticles = $state<Article[]>([]);
@@ -10,7 +17,20 @@
 	let isLoading = $state(true);
 	let hasError = $state(false);
 
+	let editingArticle = $state<Article | null>(null);
+	let isEditorOpen = $state(false);
+	let articleToDelete = $state<Article | null>(null);
+
+	let statusMessage = $state('');
+	let statusTimer: ReturnType<typeof setTimeout> | null = null;
+
 	onMount(async () => {
+		await loadArticles();
+	});
+
+	async function loadArticles() {
+		isLoading = true;
+		hasError = false;
 		try {
 			allArticles = await fetchArticles();
 			filteredArticles = allArticles;
@@ -19,10 +39,63 @@
 		} finally {
 			isLoading = false;
 		}
-	});
+	}
 
 	function handleResults(results: Article[]) {
 		filteredArticles = results;
+	}
+
+	function flashStatus(message: string) {
+		statusMessage = message;
+		if (statusTimer) clearTimeout(statusTimer);
+		statusTimer = setTimeout(() => {
+			statusMessage = '';
+		}, 3500);
+	}
+
+	function openNewEditor() {
+		editingArticle = null;
+		isEditorOpen = true;
+	}
+
+	function openEditEditor(article: Article) {
+		editingArticle = article;
+		isEditorOpen = true;
+	}
+
+	function closeEditor() {
+		isEditorOpen = false;
+		editingArticle = null;
+	}
+
+	async function handleSave(article: Article) {
+		const isEdit = editingArticle !== null;
+		if (isEdit) {
+			await updateArticle(article);
+			flashStatus(`Updated "${article.title}".`);
+		} else {
+			await createArticle(article);
+			flashStatus(`Published "${article.title}".`);
+		}
+		closeEditor();
+		await loadArticles();
+	}
+
+	function requestDelete(article: Article) {
+		articleToDelete = article;
+	}
+
+	async function confirmDelete() {
+		if (!articleToDelete) return;
+		const target = articleToDelete;
+		await deleteArticle(target.id);
+		articleToDelete = null;
+		flashStatus(`Deleted "${target.title}".`);
+		await loadArticles();
+	}
+
+	function cancelDelete() {
+		articleToDelete = null;
 	}
 </script>
 
@@ -42,8 +115,8 @@
 		</h1>
 		<p class="page-lede">
 			Every piece below gets fetched from a Firestore collection when the page loads. Search by
-			title, author, or tag, and filter by category. Try clicking "Album Reviews" or typing the
-			name of an artist.
+			title, author, or tag, and filter by category. You can also publish new articles, edit
+			existing ones, or delete them. Everything writes back to Firestore in real time.
 		</p>
 	</header>
 
@@ -61,10 +134,46 @@
 			</p>
 		</div>
 	{:else}
+		<div class="toolbar">
+			<button class="new-btn" onclick={openNewEditor}>
+				<svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+					<line x1="8" y1="3" x2="8" y2="13"/>
+					<line x1="3" y1="8" x2="13" y2="8"/>
+				</svg>
+				<span>New article</span>
+			</button>
+			{#if statusMessage}
+				<p class="status" role="status">{statusMessage}</p>
+			{/if}
+		</div>
+
 		<ArticleSearch articles={allArticles} onResults={handleResults} />
-		<ArticleGrid articles={filteredArticles} />
+		<ArticleGrid
+			articles={filteredArticles}
+			onEdit={openEditEditor}
+			onDelete={requestDelete}
+		/>
 	{/if}
 </div>
+
+{#if isEditorOpen}
+	<ArticleEditor
+		article={editingArticle}
+		onSave={handleSave}
+		onCancel={closeEditor}
+	/>
+{/if}
+
+{#if articleToDelete}
+	<ConfirmDialog
+		title="Delete this article?"
+		message={`This removes "${articleToDelete.title}" from Firestore. It cannot be undone.`}
+		confirmLabel="Delete"
+		cancelLabel="Keep it"
+		onConfirm={confirmDelete}
+		onCancel={cancelDelete}
+	/>
+{/if}
 
 <style>
 	.page {
@@ -102,6 +211,45 @@
 		color: var(--color-text-muted);
 		font-size: 1.1rem;
 		line-height: 1.65;
+	}
+
+	.toolbar {
+		display: flex;
+		align-items: center;
+		gap: var(--space-4);
+		flex-wrap: wrap;
+		margin-bottom: var(--space-5);
+	}
+
+	.new-btn {
+		display: inline-flex;
+		align-items: center;
+		gap: var(--space-2);
+		padding: var(--space-3) var(--space-5);
+		background: var(--color-accent);
+		border: 1px solid var(--color-accent);
+		color: var(--color-bg);
+		font-family: var(--font-mono);
+		font-size: 0.78rem;
+		letter-spacing: 0.16em;
+		text-transform: uppercase;
+		transition: all 0.25s var(--ease-out);
+	}
+
+	.new-btn:hover {
+		background: transparent;
+		color: var(--color-accent);
+	}
+
+	.status {
+		font-family: var(--font-mono);
+		font-size: 0.75rem;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: var(--color-accent);
+		margin: 0;
+		padding: 0.4rem 0.8rem;
+		border-left: 2px solid var(--color-accent);
 	}
 
 	.loading {

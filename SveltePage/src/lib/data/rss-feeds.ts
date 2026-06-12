@@ -2,7 +2,10 @@ import type { RssFeed } from '$lib/types';
 
 /**
  * Curated list of jazz-related RSS feeds.
- * Used by the /rss page to point readers at quality external coverage.
+ *
+ * RSS is text-only by design. When you click "Open feed" the browser
+ * shows the raw XML. To actually read the feed in a friendly format,
+ * copy the URL into an RSS reader app (Feedly, NetNewsWire, Inoreader).
  */
 export const rssFeeds: RssFeed[] = [
 	{
@@ -11,16 +14,43 @@ export const rssFeeds: RssFeed[] = [
 		publisher: 'This site',
 		url: '/rss.xml',
 		description:
-			'The site you are on, as a feed. Every new article published to the articles section appears here within minutes of going live.',
+			'The site you are on, as a feed. Every new article we publish shows up here.',
 		category: 'House feed'
 	},
 	{
-		id: 'npr-jazz',
-		name: 'A Blog Supreme',
-		publisher: 'NPR Music',
-		url: 'https://www.npr.org/rss/rss.php?id=1109',
+		id: 'london-jazz-news',
+		name: 'UK Jazz News',
+		publisher: 'UK Jazz News (formerly London Jazz News)',
+		url: 'https://ukjazznews.com/feed/',
 		description:
-			"NPR's long-running jazz blog. News, premieres, and well-edited features. A reliable feed for keeping up with what's happening at the institutional level.",
+			"Reviews, previews, and obituaries from the UK scene. Strong on European tours and festival coverage. The site rebranded from London Jazz News in 2024.",
+		category: 'European scene'
+	},
+	{
+		id: 'do-the-math',
+		name: 'DO THE M@TH',
+		publisher: 'Ethan Iverson',
+		url: 'https://ethaniverson.com/feed/',
+		description:
+			"Pianist Ethan Iverson's blog. Deep dives, interviews with elder statesmen, transcriptions, and arguments. The newer essays land at his Substack but plenty of archival material lives here.",
+		category: 'Critical writing'
+	},
+	{
+		id: 'npr-tiny-desk',
+		name: 'Tiny Desk Concerts',
+		publisher: 'NPR Music',
+		url: 'https://feeds.npr.org/1109/rss.xml',
+		description:
+			"Not jazz-only, but a steady stream of jazz, soul, and adjacent musicians passes through. The Tiny Desk has become one of the few mainstream platforms still booking working jazz artists.",
+		category: 'Performance'
+	},
+	{
+		id: 'npr-music',
+		name: 'NPR Music',
+		publisher: 'NPR',
+		url: 'https://feeds.npr.org/1039/rss.xml',
+		description:
+			"The NPR Music section feed. Broad coverage with regular jazz reviews, profiles, and obituaries from a team of staff critics.",
 		category: 'News & features'
 	},
 	{
@@ -29,52 +59,7 @@ export const rssFeeds: RssFeed[] = [
 		publisher: 'JazzTimes Magazine',
 		url: 'https://jazztimes.com/feed/',
 		description:
-			"The American magazine of record. Album reviews, artist interviews, and obituaries; an institution since 1970.",
+			"The American magazine of record. Album reviews, artist interviews, and obituaries. A jazz institution since 1970. If the feed loads empty, check directly at jazztimes.com.",
 		category: 'Reviews & features'
-	},
-	{
-		id: 'all-about-jazz',
-		name: 'All About Jazz',
-		publisher: 'All About Jazz',
-		url: 'https://www.allaboutjazz.com/rss/news.xml',
-		description:
-			"Volume-heavy coverage of the global jazz scene. Useful for catching releases that the larger outlets miss.",
-		category: 'News & reviews'
-	},
-	{
-		id: 'london-jazz-news',
-		name: 'London Jazz News',
-		publisher: 'London Jazz News',
-		url: 'https://londonjazznews.com/feed/',
-		description:
-			"Reviews, previews, and obituaries from the UK scene. Particularly strong on European tours and festival coverage.",
-		category: 'European scene'
-	},
-	{
-		id: 'wbgo-take-five',
-		name: 'Take Five',
-		publisher: 'WBGO / Jazz Night in America',
-		url: 'https://www.wbgo.org/podcast/take-five-from-jazz-night-in-america/feed.xml',
-		description:
-			"Short weekly podcast highlighting five new releases. A quick way to keep your listening current without committing to long-form reviews.",
-		category: 'Podcast'
-	},
-	{
-		id: 'do-the-math',
-		name: 'Do the Math',
-		publisher: 'Ethan Iverson',
-		url: 'https://ethaniverson.com/feed/',
-		description:
-			"Pianist Ethan Iverson's long-running blog. Deep dives, interviews with elder statesmen, transcriptions, and arguments. Essential for the player's perspective.",
-		category: 'Critical writing'
-	},
-	{
-		id: 'bandcamp-jazz',
-		name: 'Bandcamp Daily, Jazz',
-		publisher: 'Bandcamp',
-		url: 'https://daily.bandcamp.com/category/jazz/feed',
-		description:
-			"Editorial guides and label features focused on independent jazz. Strong on contemporary releases that the legacy press undercovers.",
-		category: 'Reviews & guides'
 	}
 ];

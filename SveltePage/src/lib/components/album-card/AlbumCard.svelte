@@ -9,6 +9,10 @@
 	let { album, showRank = true }: Props = $props();
 
 	const rankString = $derived(album.rank.toString().padStart(2, '0'));
+
+	const spotifySearchUrl = $derived(
+		`https://open.spotify.com/search/${encodeURIComponent(`${album.artist} ${album.title}`)}`
+	);
 </script>
 
 <article class="album-card">
@@ -118,6 +122,19 @@
 				<span class="standout-label">Standout track</span>
 				<span class="standout-track">{album.standoutTrack}</span>
 			</p>
+			<a
+				class="listen-link"
+				href={spotifySearchUrl}
+				target="_blank"
+				rel="noopener noreferrer"
+				aria-label="Search for {album.title} by {album.artist} on Spotify"
+			>
+				<svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true">
+					<path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.52 17.34a.75.75 0 0 1-1.03.25c-2.82-1.72-6.36-2.11-10.54-1.16a.75.75 0 0 1-.33-1.46c4.56-1.03 8.49-.58 11.65 1.34.36.22.47.69.25 1.03zm1.47-3.27a.94.94 0 0 1-1.29.31c-3.23-1.99-8.16-2.56-11.98-1.4a.94.94 0 0 1-.55-1.8c4.37-1.32 9.81-.69 13.51 1.6.44.27.58.85.31 1.29zm.13-3.41C15.32 8.39 8.84 8.16 5.18 9.27a1.13 1.13 0 0 1-.66-2.17c4.19-1.27 11.34-1.03 15.79 1.62a1.13 1.13 0 0 1-1.18 1.94z"/>
+				</svg>
+				<span>Listen on Spotify</span>
+				<span class="external-arrow" aria-hidden="true">↗</span>
+			</a>
 		</div>
 	</div>
 </article>
@@ -234,5 +251,31 @@
 		font-style: italic;
 		font-size: 1rem;
 		color: var(--color-accent);
+	}
+
+	.listen-link {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5em;
+		margin-top: var(--space-3);
+		padding: 0.5rem 0.85rem;
+		border: 1px solid var(--color-hairline-strong);
+		color: var(--color-text-muted);
+		font-family: var(--font-mono);
+		font-size: 0.7rem;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+		align-self: flex-start;
+		transition: all 0.25s var(--ease-out);
+	}
+
+	.listen-link:hover {
+		border-color: var(--color-accent);
+		color: var(--color-accent);
+	}
+
+	.external-arrow {
+		font-size: 0.85em;
+		opacity: 0.7;
 	}
 </style>
