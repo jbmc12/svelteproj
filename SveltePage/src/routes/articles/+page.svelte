@@ -4,12 +4,13 @@
 	import ArticleGrid from '$lib/components/article-grid/ArticleGrid.svelte';
 	import ArticleEditor from '$lib/components/article-editor/ArticleEditor.svelte';
 	import ConfirmDialog from '$lib/components/confirm-dialog/ConfirmDialog.svelte';
+	import DataTools from '$lib/components/data-tools/DataTools.svelte';
 	import {
 		fetchArticles,
 		createArticle,
 		updateArticle,
 		deleteArticle
-	} from '$lib/firebase/articles';
+	} from '$lib/services/articles-service';
 	import type { Article } from '$lib/types';
 
 	let allArticles = $state<Article[]>([]);
@@ -146,6 +147,8 @@
 				<p class="status" role="status">{statusMessage}</p>
 			{/if}
 		</div>
+
+		<DataTools articles={allArticles} onImportComplete={loadArticles} />
 
 		<ArticleSearch articles={allArticles} onResults={handleResults} />
 		<ArticleGrid

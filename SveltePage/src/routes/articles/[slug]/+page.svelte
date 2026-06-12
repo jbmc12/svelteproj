@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { page } from '$app/state';
-	import { fetchArticleBySlug } from '$lib/firebase/articles';
+	import { fetchArticleBySlug } from '$lib/services/articles-service';
 	import type { Article, ArticleCategory } from '$lib/types';
 
 	let article = $state<Article | null>(null);

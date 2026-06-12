@@ -1,0 +1,28 @@
+[
+  {
+    "id": "sample-coltrane-supreme",
+    "slug": "sample-coltrane-supreme",
+    "title": "A Love Supreme Still Matters",
+    "excerpt": "Sample article imported from data.json. Notes on why Coltrane's 1965 suite keeps showing up in 2000s jazz.",
+    "body": "This article was uploaded through the import tool to demonstrate the JSON import path. Delete it whenever you want.",
+    "category": "scene-history",
+    "author": "Sample Author",
+    "publishedAt": "2024-07-01T09:00:00.000Z",
+    "readingTimeMinutes": 4,
+    "tags": ["sample", "import-test", "coltrane"],
+    "accentHue": 280
+  },
+  {
+    "id": "sample-blue-note-reissues",
+    "slug": "sample-blue-note-reissues",
+    "title": "Blue Note Reissues, a Quick Guide",
+    "excerpt": "Sample article imported from data.json. Which of the Tone Poet pressings actually sound different.",
+    "body": "Another sample record. The import button on the Articles page should have added this to your Firestore. Try editing it inline, or delete it.",
+    "category": "listening-guide",
+    "author": "Sample Author",
+    "publishedAt": "2024-07-02T09:00:00.000Z",
+    "readingTimeMinutes": 6,
+    "tags": ["sample", "import-test", "blue-note", "reissues"],
+    "accentHue": 210
+  }
+]

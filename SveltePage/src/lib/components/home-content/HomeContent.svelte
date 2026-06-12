@@ -5,7 +5,7 @@
 	import ArticleSearch from '$lib/components/article-search/ArticleSearch.svelte';
 	import ArticleGrid from '$lib/components/article-grid/ArticleGrid.svelte';
 	import { albums } from '$lib/data/albums';
-	import { fetchArticles } from '$lib/firebase/articles';
+	import { fetchArticles } from '$lib/services/articles-service';
 	import type { Article } from '$lib/types';
 
 	const featured = albums.find((a) => a.id === 'historicity') ?? albums[0];

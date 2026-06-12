@@ -11,7 +11,7 @@ import {
 	deleteDoc,
 	type QueryConstraint
 } from 'firebase/firestore';
-import { getDb } from './client';
+import { getDb } from './firebase-client';
 import type { Article, ArticleCategory } from '$lib/types';
 
 const COLLECTION_NAME = 'articles';

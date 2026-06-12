@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<articles>
+  <article>
+    <id>sample-xml-monk-centenary</id>
+    <slug>sample-xml-monk-centenary</slug>
+    <title>Monk at 100, Reconsidered</title>
+    <excerpt>Sample article imported from data.xml. How Monk's compositions sound to the 2000s ear.</excerpt>
+    <body>This article was uploaded through the XML import path. The parser handles standard XML escapes like &amp;amp;, &amp;lt;, and &amp;gt;.</body>
+    <category>musician-profile</category>
+    <author>Sample Author</author>
+    <publishedAt>2024-07-05T09:00:00.000Z</publishedAt>
+    <readingTimeMinutes>8</readingTimeMinutes>
+    <accentHue>20</accentHue>
+    <tags>
+      <tag>sample</tag>
+      <tag>import-test</tag>
+      <tag>monk</tag>
+      <tag>centenary</tag>
+    </tags>
+  </article>
+  <article>
+    <id>sample-xml-recording-rooms</id>
+    <slug>sample-xml-recording-rooms</slug>
+    <title>The Recording Rooms That Shaped 2000s Jazz</title>
+    <excerpt>Sample article imported from data.xml. From Avatar in NYC to Rainbow in Oslo.</excerpt>
+    <body>Another sample. Acoustics, microphone choices, and the engineers whose names you should know.</body>
+    <category>scene-history</category>
+    <author>Sample Author</author>
+    <publishedAt>2024-07-06T09:00:00.000Z</publishedAt>
+    <readingTimeMinutes>9</readingTimeMinutes>
+    <accentHue>160</accentHue>
+    <tags>
+      <tag>sample</tag>
+      <tag>import-test</tag>
+      <tag>recording</tag>
+      <tag>studios</tag>
+    </tags>
+  </article>
+</articles>
